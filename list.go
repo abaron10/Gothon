@@ -86,112 +86,88 @@ The pop() method removes the element at the specified position.-----------------
 Ref https://www.w3schools.com/python/ref_list_pop.asp------------------------------------------------------
 */
 
-func PopInt(a []int, index int) ([]int, int) {
-	if emptySlice(len(a)) {
+func PopInt(a *[]int, index int) int {
+	if emptySlice(len((*a))) {
 		panic("IndexError: pop from empty list")
 	}
-	r := []int{}
-	if index > len(a)-1 {
+	if index > len((*a))-1 {
 		panic("IndexError: pop index out of range")
 	} else if index < 0 {
-		index = negativeIndexTranslation(len(a), index)
+		index = negativeIndexTranslation(len((*a)), index)
 	}
-	for i, v := range a {
-		if i != index {
-			r = append(r, v)
-		}
-	}
-	return r, a[index]
+	popped := (*a)[index]
+	(*a) = append((*a)[:index], (*a)[index+1:]...)
+	return popped
 }
 
-func PopInt32(a []int32, index int) ([]int32, int32) {
-	if emptySlice(len(a)) {
+func PopInt32(a *[]int32, index int) int32 {
+	if emptySlice(len((*a))) {
 		panic("IndexError: pop from empty list")
 	}
-	r := []int32{}
-	if index > len(a)-1 {
+	if index > len((*a))-1 {
 		panic("IndexError: pop index out of range")
 	} else if index < 0 {
-		index = negativeIndexTranslation(len(a), index)
+		index = negativeIndexTranslation(len((*a)), index)
 	}
-	for i, v := range a {
-		if i != index {
-			r = append(r, v)
-		}
-	}
-	return r, a[index]
+	popped := (*a)[index]
+	(*a) = append((*a)[:index], (*a)[index+1:]...)
+	return popped
 }
 
-func PopInt64(a []int64, index int) ([]int64, int64) {
-	if emptySlice(len(a)) {
+func PopInt64(a *[]int64, index int) int64 {
+	if emptySlice(len((*a))) {
 		panic("IndexError: pop from empty list")
 	}
-	r := []int64{}
-	if index > len(a)-1 {
+	if index > len((*a))-1 {
 		panic("IndexError: pop index out of range")
 	} else if index < 0 {
-		index = negativeIndexTranslation(len(a), index)
+		index = negativeIndexTranslation(len((*a)), index)
 	}
-	for i, v := range a {
-		if i != index {
-			r = append(r, v)
-		}
-	}
-	return r, a[index]
+	popped := (*a)[index]
+	(*a) = append((*a)[:index], (*a)[index+1:]...)
+	return popped
 }
 
-func PopFloat32(a []float32, index int) ([]float32, float32) {
-	if emptySlice(len(a)) {
+func PopFloat32(a *[]float32, index int) float32 {
+	if emptySlice(len((*a))) {
 		panic("IndexError: pop from empty list")
 	}
-	r := []float32{}
-	if index > len(a)-1 {
+	if index > len((*a))-1 {
 		panic("IndexError: pop index out of range")
 	} else if index < 0 {
-		index = negativeIndexTranslation(len(a), index)
+		index = negativeIndexTranslation(len((*a)), index)
 	}
-	for i, v := range a {
-		if i != index {
-			r = append(r, v)
-		}
-	}
-	return r, a[index]
+	popped := (*a)[index]
+	(*a) = append((*a)[:index], (*a)[index+1:]...)
+	return popped
 }
 
-func PopFloat64(a []float64, index int) ([]float64, float64) {
-	if emptySlice(len(a)) {
+func PopFloat64(a *[]float64, index int) float64 {
+	if emptySlice(len((*a))) {
 		panic("IndexError: pop from empty list")
 	}
-	r := []float64{}
-	if index > len(a)-1 {
+	if index > len((*a))-1 {
 		panic("IndexError: pop index out of range")
 	} else if index < 0 {
-		index = negativeIndexTranslation(len(a), index)
+		index = negativeIndexTranslation(len((*a)), index)
 	}
-	for i, v := range a {
-		if i != index {
-			r = append(r, v)
-		}
-	}
-	return r, a[index]
+	popped := (*a)[index]
+	(*a) = append((*a)[:index], (*a)[index+1:]...)
+	return popped
 }
 
-func PopString(a []string, index int) ([]string, string) {
-	if emptySlice(len(a)) {
+func PopString(a *[]string, index int) string {
+	if emptySlice(len((*a))) {
 		panic("IndexError: pop from empty list")
 	}
-	r := []string{}
-	if index > len(a)-1 {
+	if index > len((*a))-1 {
 		panic("IndexError: pop index out of range")
 	} else if index < 0 {
-		index = negativeIndexTranslation(len(a), index)
+		index = negativeIndexTranslation(len((*a)), index)
 	}
-	for i, v := range a {
-		if i != index {
-			r = append(r, v)
-		}
-	}
-	return r, a[index]
+	popped := (*a)[index]
+	(*a) = append((*a)[:index], (*a)[index+1:]...)
+	return popped
 }
 
 /*---------------------------------------------------------------------------------------------------------

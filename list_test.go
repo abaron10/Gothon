@@ -42,8 +42,8 @@ func TestExtendMethod(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := tt.extendFunction
-			assert.Equal(t, result, tt.expectedResult)
+			extendedList := tt.extendFunction
+			assert.Equal(t, tt.expectedResult, extendedList)
 		})
 	}
 }
@@ -57,45 +57,37 @@ func TestPopMethod(t *testing.T) {
 	var tests = []struct {
 		name                string
 		extendFunction      interface{}
-		expectedListResult  (interface{},interface{})
 		expectedPoppedValue interface{}
 	}{
-		{"Extends int",
-			PopInt([]int{1, 2, 3}, -1),
-			[]int{1, 2},
-			3,
+		{"Pop int",
+			PopInt(&[]int{1, 2, 3}, -1),
+			int(3),
 		},
-		{"Extends int32",
-			PopInt32([]int32{1, 2, 3}, 0),
-			[]int32{2, 3},
-			1,
+		{"Pop int32",
+			PopInt32(&[]int32{1, 2, 3}, 0),
+			int32(1),
 		},
-		{"Extends int32",
-			PopInt64([]int64{1, 2, 3}, 1),
-			[]int64{1, 3},
-			2,
+		{"Pop int64",
+			PopInt64(&[]int64{1, 2, 3}, 1),
+			int64(2),
 		},
-		{"Extends float32",
-			PopFloat32([]float32{1.1, 1.2, 1.3}, 2),
-			[]float32{1.1, 1.2},
-			1.3,
+		{"Pop float32",
+			PopFloat32(&[]float32{1.1, 1.2, 1.3}, 2),
+			float32(1.3),
 		},
-		{"Extends float64",
-			PopFloat64([]float64{1.1, 1.2, 1.3}, -2),
-			[]float64{1.1, 1.3},
+		{"Pop float64",
+			PopFloat64(&[]float64{1.1, 1.2, 1.3}, -2),
 			1.2,
 		},
-		{"Extends string",
-			PopString([]string{"apple", "amazon", "google"}, -1),
-			[]string{"apple", "amazon"},
+		{"Pop string",
+			PopString(&[]string{"apple", "amazon", "google"}, -1),
 			"google",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			listResult := tt.extendFunction
-			a , b := listResult
-			assert.Equal(t, listResult, tt.expectedListResult)
+			PoppedValue := tt.extendFunction
+			assert.Equal(t, tt.expectedPoppedValue, PoppedValue)
 		})
 	}
 }

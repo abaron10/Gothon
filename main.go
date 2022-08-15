@@ -4,11 +4,11 @@ import "fmt"
 
 func main() {
 
-	a := []int{1, 2, 4}
-	//b := []int{}
+	//a := []int{1, 2, 4}
+	b := []string{"aaa", "bbb", "ccc"}
+	c := PopInt64(&[]int64{1, 2, 3}, 1)
 
-	c, e := PopInt(a, 1)
-
-	fmt.Println(c, e)
+	fmt.Println(c)
+	fmt.Println(b)
 
 }
