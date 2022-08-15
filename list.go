@@ -23,80 +23,73 @@ func negativeIndexTranslation(listSize int, index int) int {
 	return t
 }
 
-/*---------------------------------------------------------------------------------------------------------
--------------------------------------------EXTENDS METHOD------------------------------------------------
----------------------------------------------------------------------------------------------------------
-*/
-func ExtendInt(a interface{}, b interface{}) []int {
-	if s1, ok := a.([]int); ok {
-		if s2, ok := b.([]int); ok {
-			for _, v := range s2 {
-				s1 = append(s1, v)
-			}
-			return s1
-		}
-		panic(fmt.Sprintf("TypeError: can only concatenate []int32 not %s", reflect.TypeOf(b)))
+func emptySlice(a int) bool {
+	if a == 0 {
+		return true
 	}
-	panic(fmt.Sprintf("TypeError: can only concatenate []int32 not %s", reflect.TypeOf(a)))
-}
-
-func ExtendInt32(a interface{}, b interface{}) []int32 {
-	if s1, ok := a.([]int32); ok {
-		if s2, ok := b.([]int32); ok {
-			for _, v := range s2 {
-				s1 = append(s1, v)
-			}
-			return s1
-		}
-		panic(fmt.Sprintf("TypeError: can only concatenate []int32 not %s", reflect.TypeOf(b)))
-	}
-	panic(fmt.Sprintf("TypeError: can only concatenate []int32 not %s", reflect.TypeOf(a)))
-}
-
-func ExtendInt64(a interface{}, b interface{}) []int64 {
-	if s1, ok := a.([]int64); ok {
-		if s2, ok := b.([]int64); ok {
-			for _, v := range s2 {
-				s1 = append(s1, v)
-			}
-			return s1
-		}
-		panic(fmt.Sprintf("TypeError: can only concatenate []int64 not %s", reflect.TypeOf(b)))
-	}
-	panic(fmt.Sprintf("TypeError: can only concatenate []int64 not %s", reflect.TypeOf(a)))
-}
-
-func ExtendFloat32(a interface{}, b interface{}) []float32 {
-	if s1, ok := a.([]float32); ok {
-		if s2, ok := b.([]float32); ok {
-			for _, v := range s2 {
-				s1 = append(s1, v)
-			}
-			return s1
-		}
-		panic(fmt.Sprintf("TypeError: can only concatenate []float32 not %s", reflect.TypeOf(b)))
-	}
-	panic(fmt.Sprintf("TypeError: can only concatenate []float32 not %s", reflect.TypeOf(a)))
-}
-
-func ExtendString(a interface{}, b interface{}) []string {
-	if s1, ok := a.([]string); ok {
-		if s2, ok := b.([]string); ok {
-			for _, v := range s2 {
-				s1 = append(s1, v)
-			}
-			return s1
-		}
-		panic(fmt.Sprintf("TypeError: can only concatenate []float32 not %s", reflect.TypeOf(b)))
-	}
-	panic(fmt.Sprintf("TypeError: can only concatenate []float32 not %s", reflect.TypeOf(a)))
+	return false
 }
 
 /*---------------------------------------------------------------------------------------------------------
--------------------------------------------POP METHOD------------------------------------------------
----------------------------------------------------------------------------------------------------------
+-------------------------------------------EXTENDS METHOD--------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+The extend() method adds the specified list elements (or any iterable) to the end of the current list.-----
+Ref https://www.w3schools.com/python/ref_list_extend.asp --------------------------------------------------
 */
+
+func ExtendInt(a []int, b []int) []int {
+	for _, v := range b {
+		a = append(a, v)
+	}
+	return a
+}
+
+func ExtendInt32(a []int32, b []int32) []int32 {
+	for _, v := range b {
+		a = append(a, v)
+	}
+	return a
+}
+
+func ExtendInt64(a []int64, b []int64) []int64 {
+	for _, v := range b {
+		a = append(a, v)
+	}
+	return a
+}
+
+func ExtendFloat32(a []float32, b []float32) []float32 {
+	for _, v := range b {
+		a = append(a, v)
+	}
+	return a
+}
+
+func ExtendFloat64(a []float64, b []float64) []float64 {
+	for _, v := range b {
+		a = append(a, v)
+	}
+	return a
+}
+
+func ExtendString(a []string, b []string) []string {
+	for _, v := range b {
+		a = append(a, v)
+	}
+	return a
+}
+
+/*---------------------------------------------------------------------------------------------------------
+-------------------------------------------POP METHOD------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+The pop() method removes the element at the specified position.--------------------------------------------
+Ref https://www.w3schools.com/python/ref_list_pop.asp------------------------------------------------------
+*/
+
 func PopInt(a []int, index int) ([]int, int) {
+	if emptySlice(len(a)) {
+		panic("IndexError: pop from empty list")
+	}
 	r := []int{}
 	if index > len(a)-1 {
 		panic("IndexError: pop index out of range")
@@ -111,8 +104,11 @@ func PopInt(a []int, index int) ([]int, int) {
 	return r, a[index]
 }
 
-func PopInt32(a []int, index int) ([]int, int) {
-	r := []int{}
+func PopInt32(a []int32, index int) ([]int32, int32) {
+	if emptySlice(len(a)) {
+		panic("IndexError: pop from empty list")
+	}
+	r := []int32{}
 	if index > len(a)-1 {
 		panic("IndexError: pop index out of range")
 	} else if index < 0 {
@@ -125,6 +121,85 @@ func PopInt32(a []int, index int) ([]int, int) {
 	}
 	return r, a[index]
 }
+
+func PopInt64(a []int64, index int) ([]int64, int64) {
+	if emptySlice(len(a)) {
+		panic("IndexError: pop from empty list")
+	}
+	r := []int64{}
+	if index > len(a)-1 {
+		panic("IndexError: pop index out of range")
+	} else if index < 0 {
+		index = negativeIndexTranslation(len(a), index)
+	}
+	for i, v := range a {
+		if i != index {
+			r = append(r, v)
+		}
+	}
+	return r, a[index]
+}
+
+func PopFloat32(a []float32, index int) ([]float32, float32) {
+	if emptySlice(len(a)) {
+		panic("IndexError: pop from empty list")
+	}
+	r := []float32{}
+	if index > len(a)-1 {
+		panic("IndexError: pop index out of range")
+	} else if index < 0 {
+		index = negativeIndexTranslation(len(a), index)
+	}
+	for i, v := range a {
+		if i != index {
+			r = append(r, v)
+		}
+	}
+	return r, a[index]
+}
+
+func PopFloat64(a []float64, index int) ([]float64, float64) {
+	if emptySlice(len(a)) {
+		panic("IndexError: pop from empty list")
+	}
+	r := []float64{}
+	if index > len(a)-1 {
+		panic("IndexError: pop index out of range")
+	} else if index < 0 {
+		index = negativeIndexTranslation(len(a), index)
+	}
+	for i, v := range a {
+		if i != index {
+			r = append(r, v)
+		}
+	}
+	return r, a[index]
+}
+
+func PopString(a []string, index int) ([]string, string) {
+	if emptySlice(len(a)) {
+		panic("IndexError: pop from empty list")
+	}
+	r := []string{}
+	if index > len(a)-1 {
+		panic("IndexError: pop index out of range")
+	} else if index < 0 {
+		index = negativeIndexTranslation(len(a), index)
+	}
+	for i, v := range a {
+		if i != index {
+			r = append(r, v)
+		}
+	}
+	return r, a[index]
+}
+
+/*---------------------------------------------------------------------------------------------------------
+-------------------------------------------INDEX METHOD----------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+The index() method returns the position at the first occurrence of the specified value.--------------------
+Ref https://www.w3schools.com/python/ref_list_index.asp----------------------------------------------------
+*/
 
 func Index(lA []interface{}, value interface{}) int {
 	rType := reflect.TypeOf(value)
