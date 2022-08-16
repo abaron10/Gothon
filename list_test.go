@@ -218,47 +218,127 @@ func TestContainsMethod(t *testing.T) {
 -----------------------------------------REVERSE METHOD TESTS----------------------------------------------
 -----------------------------------------------------------------------------------------------------------
 */
-
 func TestReverseMethod(t *testing.T) {
-	var tests = []struct {
-		name           string
-		sliceToReverse interface{}
-		reversedSlice  interface{}
-	}{
-		{"Reverse int",
-			[]int{1, 2, 3},
-			[]int{3, 2, 1},
-		},
-		{"Reverse int32",
-			[]int32{1, 4, 9},
-			[]int32{9, 4, 1},
-		},
-		{"Reverse int64",
-			[]int64{9, 8, 7},
-			[]int64{7, 8, 9},
-		},
-		{"Reverse float32",
-			[]float32{1.1, 1.2, 1.3},
-			[]float32{1.3, 1.2, 1.1},
-		},
-		{"Reverse float64",
-			[]float64{9.3, 9.1, 9.4},
-			[]float64{9.4, 9.1, 9.3},
-		},
-		{"Reverse string",
-			[]string{"apple", "amazon", "google"},
-			[]string{"google", "amazon", "apple"},
-		},
-		{"Reverse struct",
-			[]TestStruct{{1}, {2}},
-			[]TestStruct{{2}, {1}},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
 
-			Reverse(&tt.sliceToReverse)
-			assert.Equal(t, tt.expectedIndexValue, IndexValue)
-		})
-	}
+	t.Run("Reverse int", func(t *testing.T) {
+		a := []int{1, 2, 3}
+		Reverse(&a)
+		assert.Equal(t, []int{3, 2, 1}, a)
+	})
+	t.Run("Reverse int32", func(t *testing.T) {
+		a := []int32{1, 2, 3}
+		Reverse(&a)
+		assert.Equal(t, []int32{3, 2, 1}, a)
+	})
+	t.Run("Reverse int64", func(t *testing.T) {
+		a := []int64{1, 2, 3}
+		Reverse(&a)
+		assert.Equal(t, []int64{3, 2, 1}, a)
+	})
+	t.Run("Reverse float32", func(t *testing.T) {
+		a := []float32{1.1, 2.1, 3.1}
+		Reverse(&a)
+		assert.Equal(t, []float32{3.1, 2.1, 1.1}, a)
+	})
+	t.Run("Reverse float64", func(t *testing.T) {
+		a := []float64{1.1, 2.1, 3.1}
+		Reverse(&a)
+		assert.Equal(t, []float64{3.1, 2.1, 1.1}, a)
+	})
+	t.Run("Reverse string", func(t *testing.T) {
+		a := []string{"apple", "amazon", "google"}
+		Reverse(&a)
+		assert.Equal(t, []string{"google", "amazon", "apple"}, a)
+	})
+	t.Run("Reverse struct", func(t *testing.T) {
+		a := []TestStruct{{1}, {2}}
+		Reverse(&a)
+		assert.Equal(t, []TestStruct{{2}, {1}}, a)
+	})
+}
+
+/*---------------------------------------------------------------------------------------------------------
+------------------------------------------REMOVE METHOD TESTS----------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+*/
+func TestRemoveMethod(t *testing.T) {
+
+	t.Run("Remove int", func(t *testing.T) {
+		a := []int{1, 2, 3}
+		Remove(&a, 2)
+		assert.Equal(t, []int{1, 3}, a)
+	})
+	t.Run("Remove int32", func(t *testing.T) {
+		a := []int32{1, 2, 3}
+		Remove(&a, 1)
+		assert.Equal(t, []int32{2, 3}, a)
+	})
+	t.Run("Remove int64", func(t *testing.T) {
+		a := []int64{1, 2, 3}
+		Remove(&a, 3)
+		assert.Equal(t, []int64{1, 2}, a)
+	})
+	t.Run("Remove float32", func(t *testing.T) {
+		a := []float32{1.1, 2.1, 3.1}
+		Remove(&a, 2.1)
+		assert.Equal(t, []float32{1.1, 3.1}, a)
+	})
+	t.Run("Remove float64", func(t *testing.T) {
+		a := []float64{1.1, 2.1, 3.1}
+		Remove(&a, 1.1)
+		assert.Equal(t, []float64{2.1, 3.1}, a)
+	})
+	t.Run("Remove string", func(t *testing.T) {
+		a := []string{"apple", "amazon", "google"}
+		Remove(&a, "apple")
+		assert.Equal(t, []string{"amazon", "google"}, a)
+	})
+	t.Run("Remove struct", func(t *testing.T) {
+		a := []TestStruct{{1}, {2}}
+		Remove(&a, a[1])
+		assert.Equal(t, []TestStruct{{1}}, a)
+	})
+}
+
+/*---------------------------------------------------------------------------------------------------------
+------------------------------------------INSERT METHOD TESTS----------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+*/
+func TestInsertMethod(t *testing.T) {
+
+	t.Run("Insert int", func(t *testing.T) {
+		a := []int{1, 2, 3}
+		Insert(&a, 0, 9)
+		assert.Equal(t, []int{9, 1, 2, 3}, a)
+	})
+	t.Run("Insert int32", func(t *testing.T) {
+		a := []int32{1, 2, 3}
+		Insert(&a, 1, 9)
+		assert.Equal(t, []int32{1, 9, 2, 3}, a)
+	})
+	t.Run("Insert int64", func(t *testing.T) {
+		a := []int64{1, 2, 3}
+		Insert(&a, 2, 9)
+		assert.Equal(t, []int64{1, 2, 9, 3}, a)
+	})
+	t.Run("Insert float32", func(t *testing.T) {
+		a := []float32{1.1, 2.1, 3.1}
+		Insert(&a, 2, 9)
+		assert.Equal(t, []float32{1.1, 2.1, 9, 3.1}, a)
+	})
+	t.Run("Insert float64", func(t *testing.T) {
+		a := []float64{1.1, 2.1, 3.1}
+		Insert(&a, 0, 1)
+		assert.Equal(t, []float64{1, 1.1, 2.1, 3.1}, a)
+	})
+	t.Run("Insert string", func(t *testing.T) {
+		a := []string{"apple", "amazon", "google"}
+		Insert(&a, 1, "meta")
+		assert.Equal(t, []string{"apple", "meta", "amazon", "google"}, a)
+	})
+	t.Run("Insert struct", func(t *testing.T) {
+		a := []TestStruct{{1}, {2}}
+		Insert(&a, 1, a[1])
+		assert.Equal(t, []TestStruct{{1}, {2}, {2}}, a)
+	})
 }

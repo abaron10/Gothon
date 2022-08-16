@@ -1,6 +1,6 @@
 package main
 
-//The Extend() method adds the specified list elements to the end of the current list
+//the Extend() method adds the specified list elements to the end of the current list
 func Extend[T any](a []T, b []T) []T {
 	for _, v := range b {
 		a = append(a, v)
@@ -8,7 +8,7 @@ func Extend[T any](a []T, b []T) []T {
 	return a
 }
 
-//The Pop() method removes the element at the specified position
+//the Pop() method removes the element at the specified position
 func Pop[T any](a *[]T, index int) T {
 	if emptySlice(len((*a))) {
 		panic("IndexError: pop from empty list")
@@ -19,7 +19,7 @@ func Pop[T any](a *[]T, index int) T {
 	return popped
 }
 
-//The Index() method returns the position at the first occurrence of the specified value
+//the Index() method returns the position at the first occurrence of the specified value
 func Index[T comparable](a []T, value T) int {
 	for i, v := range a {
 		if v == value {
@@ -29,12 +29,12 @@ func Index[T comparable](a []T, value T) int {
 	return -1
 }
 
-//The Contains() method check if the item exists in the list
+//the Contains() method check if the item exists in the list
 func Contains[T comparable](a []T, value T) bool {
 	return Index(a, value) != -1
 }
 
-//The Reverse() method reverses the sorting order of the elements. Receives a pointer from the given slice
+//the Reverse() method reverses the sorting order of the elements. Receives a pointer from the given slice
 func Reverse[T any](a *[]T) {
 	r := []T{}
 	for i := len((*a)) - 1; i >= 0; i-- {
@@ -43,22 +43,25 @@ func Reverse[T any](a *[]T) {
 	(*a) = r
 }
 
-//The Remove() method removes the first occurrence of the element with the specified value.
+//the Remove() method removes the first occurrence of the element with the specified value
 func Remove[T comparable](a *[]T, value T) {
-	Pop(a, Index((*a), value))
+	if index := Index((*a), value); index != -1 {
+		Pop(a, Index((*a), value))
+	}
 }
 
-//The Insert() method inserts the specified value at the specified position.
+//the Insert() method inserts the specified value at the specified position
 func Insert[T any](a *[]T, index int, value T) {
-	index = validateIndex(index, len(*a))
-	if len((*a)) == index { // nil or empty slice or after last element
+	if len((*a)) <= index { // nil or empty slice or after last element
 		(*a) = append((*a), value)
+		return
 	}
+	index = validateIndex(index, len(*a))
 	(*a) = append((*a)[:index+1], (*a)[index:]...) // index < len(a)
 	(*a)[index] = value
 }
 
-//Helpers methods
+//helpers methods
 func validateIndex(index int, size int) int {
 	if index > size-1 {
 		panic("IndexError: pop index out of range")
