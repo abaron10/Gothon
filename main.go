@@ -1,14 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+type Test struct {
+	id string
+}
 
 func main() {
 
-	//a := []int{1, 2, 4}
-	b := []string{"aaa", "bbb", "ccc"}
-	c := PopInt64(&[]int64{1, 2, 3}, 1)
+	a := []Test{{id: "qqqq"}, {id: "AAAA"}}
+	//b := []Test{{id: "1111"}, {id: "kdkdkd"}}
+	//c := []int{2, 3, 4, 5}
 
-	fmt.Println(c)
-	fmt.Println(b)
+	//fmt.Println(Pop(&c, -1) + 5)
+	//z := Extend(a, b)
+
+	fmt.Println(Pop(&a, -1))
+	//c, ok := ExtendInterface(a, b).([]Test)
+
+	//fmt.Println(reflect.TypeOf(Extend(a, b)))
 
 }
