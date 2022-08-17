@@ -1,19 +1,18 @@
-package GothonSlice
+package gothonSlice
 
 import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
-/*---------------------------------------------------------------------------------------------------------
--------------------------------------------EXTEND METHOD TESTS---------------------------------------------
------------------------------------------------------------------------------------------------------------
-*/
-
 type TestStruct struct {
 	id int
 }
 
+/*---------------------------------------------------------------------------------------------------------
+-------------------------------------------EXTEND METHOD TESTS---------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+*/
 func TestExtendMethod(t *testing.T) {
 
 	var tests = []struct {
@@ -78,7 +77,7 @@ func TestExtendMethod(t *testing.T) {
 func TestPopMethod(t *testing.T) {
 	var tests = []struct {
 		name                string
-		extendFunction      interface{}
+		popFunction         interface{}
 		expectedPoppedValue interface{}
 	}{
 		{"Pop int",
@@ -112,7 +111,7 @@ func TestPopMethod(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			PoppedValue := tt.extendFunction
+			PoppedValue := tt.popFunction
 			assert.Equal(t, tt.expectedPoppedValue, PoppedValue)
 		})
 	}
@@ -126,7 +125,7 @@ func TestPopMethod(t *testing.T) {
 func TestIndexMethod(t *testing.T) {
 	var tests = []struct {
 		name               string
-		extendFunction     interface{}
+		indexFunction      interface{}
 		expectedIndexValue interface{}
 	}{
 		{"Index int",
@@ -160,7 +159,7 @@ func TestIndexMethod(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			IndexValue := tt.extendFunction
+			IndexValue := tt.indexFunction
 			assert.Equal(t, tt.expectedIndexValue, IndexValue)
 		})
 	}
@@ -173,9 +172,9 @@ func TestIndexMethod(t *testing.T) {
 
 func TestContainsMethod(t *testing.T) {
 	var tests = []struct {
-		name               string
-		extendFunction     interface{}
-		expectedIndexValue interface{}
+		name                     string
+		containsFunction         interface{}
+		expectedContainsResponse interface{}
 	}{
 		{"Contains int",
 			Contains([]int{1, 2, 3}, -1),
@@ -208,8 +207,8 @@ func TestContainsMethod(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			IndexValue := tt.extendFunction
-			assert.Equal(t, tt.expectedIndexValue, IndexValue)
+			IndexValue := tt.containsFunction
+			assert.Equal(t, tt.expectedContainsResponse, IndexValue)
 		})
 	}
 }
@@ -340,5 +339,48 @@ func TestInsertMethod(t *testing.T) {
 		a := []TestStruct{{1}, {2}}
 		Insert(&a, 1, a[1])
 		assert.Equal(t, []TestStruct{{1}, {2}, {2}}, a)
+	})
+}
+
+/*---------------------------------------------------------------------------------------------------------
+------------------------------------------COPY METHOD TESTS----------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+*/
+func TestCopyMethod(t *testing.T) {
+
+	t.Run("Copy int", func(t *testing.T) {
+		a := []int{1, 2, 3}
+		b := Copy(a)
+		assert.Equal(t, b, a)
+	})
+	t.Run("Copy int32", func(t *testing.T) {
+		a := []int32{1, 2, 3}
+		b := Copy(a)
+		assert.Equal(t, b, a)
+	})
+	t.Run("Copy int64", func(t *testing.T) {
+		a := []int64{1, 2, 3}
+		b := Copy(a)
+		assert.Equal(t, b, a)
+	})
+	t.Run("Copy float32", func(t *testing.T) {
+		a := []float32{1.1, 2.1, 3.1}
+		b := Copy(a)
+		assert.Equal(t, b, a)
+	})
+	t.Run("Copy float64", func(t *testing.T) {
+		a := []float64{1.1, 2.1, 3.1}
+		b := Copy(a)
+		assert.Equal(t, b, a)
+	})
+	t.Run("Copy string", func(t *testing.T) {
+		a := []string{"apple", "amazon", "google"}
+		b := Copy(a)
+		assert.Equal(t, b, a)
+	})
+	t.Run("Copy struct", func(t *testing.T) {
+		a := []TestStruct{{1}, {2}}
+		b := Copy(a)
+		assert.Equal(t, b, a)
 	})
 }
