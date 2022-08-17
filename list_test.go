@@ -1,4 +1,4 @@
-package main
+package GothonSlice
 
 import (
 	"github.com/stretchr/testify/assert"

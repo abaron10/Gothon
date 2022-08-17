@@ -1,4 +1,4 @@
-package main
+package GothonSlice
 
 //the Extend() method adds the specified list elements to the end of the current list
 func Extend[T any](a []T, b []T) []T {
@@ -74,7 +74,7 @@ func validateIndex(index int, size int) int {
 func negativeIndexTranslation(listSize int, index int) int {
 	t := listSize + index
 	if t < 0 {
-		panic("IndexError: pop index out of range")
+		panic("IndexError: Index out of range")
 	}
 	return t
 }
