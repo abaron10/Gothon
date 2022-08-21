@@ -23,5 +23,3 @@ jobs:
           command: go test -v
       - codecov/upload:
           file: './coverage/clover.xml'
-          token: eae2f4e2-3741-429d-83b7-c99834c04312
-
