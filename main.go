@@ -2,16 +2,18 @@ package main
 
 import (
 	"fmt"
-	"github.com/abaron10/Gothon/gothonSlice"
+	"github.com/abaron10/Gothon/gothonHeapq"
 )
 
 func main() {
 
-	a := []int32{1, 2, 3}
-	b := gothonSlice.Copy(a)
-	gothonSlice.Pop(&b, len(b)-1)
-	fmt.Println(a, &b)
+	a := []int{9, 2, 3, 7, 100, 64, 1004, 2}
 
+	gothonHeapq.Heapify(&a)
+
+	gothonHeapq.HeapPush(&a, 1)
+
+	fmt.Println(a)
 }
 
 func Test(a interface{}) {
