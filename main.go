@@ -16,6 +16,7 @@ func main() {
 	fmt.Println(a)
 }
 
+//ddd
 func Test(a interface{}) {
 	anySlice, ok := a.([]interface{})
 	fmt.Println(anySlice, ok)
