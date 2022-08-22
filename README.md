@@ -1,13 +1,11 @@
-
-
-![image](https://user-images.githubusercontent.com/64280930/185981845-029cde4a-f947-4a8f-a2d2-a7f9fb9c0f92.png)
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
+ <img src="https://github.com/abaron10/Gothon/blob/develop/Gothon.png?raw=true)" />
   <h3 align="center">Gothon library</h3>
 </p>
 
-
+Goth
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
