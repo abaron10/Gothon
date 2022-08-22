@@ -1,0 +1,36 @@
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/go:1.18
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - go-mod-v4-{{ checksum "go.sum" }}
+      - run:
+          name: Install Dependencies
+          command: go get ./...
+      - save_cache:
+          key: go-mod-v4-{{ checksum "go.sum" }}
+          paths:
+            - "/go/pkg/mod"
+      - run:
+          name: Run tests
+          command: |
+            go test ./... -coverprofile coverage.out -covermode count
+            go tool cover -func coverage.out
+            echo "Quality Gate: checking test coverage is above threshold ..."
+            echo "Threshold             : 70 %"
+            totalCoverage=`go tool cover -func=coverage.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
+            echo "Current test coverage : $totalCoverage %"
+            if (( $(echo "$totalCoverage 70" | awk '{print ($1 > $2)}') )); then
+            echo "OK"
+            else
+            echo "Current test coverage is below threshold. Please add more unit tests or adjust threshold to a lower value."
+            echo "Failed"
+            exit 1
+            fi
