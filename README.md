@@ -5,7 +5,7 @@
 <br />
 <p align="center">
 
-    <img src="user-images.githubusercontent.com/64280930/185979406-752454fd-b757-46ea-8c2b-00e35721083c.png" alt="Logo" width="200" height="45">
+    <img src="https://user-images.githubusercontent.com/64280930/185981845-029cde4a-f947-4a8f-a2d2-a7f9fb9c0f92.png" alt="Logo" width="200" height="45">
   </a>
 
   <h3 align="center">Facebook Login clone</h3>
