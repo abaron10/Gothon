@@ -8,7 +8,7 @@
   
 </p>
 
-The main objective of the Gothon is to facilitate and speed up the development process by taking inspiration from some cool methods Python coding language. With the version of Go 1.18 the use of generics makes it much easier to create generic methods with a smaller amount of code, this library takes advantage of the best of this new feature
+The main goal of the Gothon's library is to facilitate and speed up the development process by taking inspiration from some cool methods Python coding language. With the version of Go 1.18 the use of generics makes it much easier to create generic methods with a smaller amount of code, this library takes advantage of the best of this new feature
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
