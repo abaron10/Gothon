@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
- <img src="https://github.com/abaron10/Gothon/blob/develop/static/Gothon.png?raw=true)" />
+ <img src="https://github.com/abaron10/Gothon/blob/master/static/Gothon.png?raw=true)" />
   <h3 align="center">Gothon library</h3>
   
 </p>
@@ -47,14 +47,14 @@ The following example shows the use of the extends method, which adds two lists 
 As said before, this library works with Go 1.18, so with the use of generics you don't need to call another function to achieve the same goal with slices of other types. Reference to Python usage https://www.w3schools.com/python/ref_list_extend.asp
 
 <p align="center">
- <img src="https://github.com/abaron10/Gothon/blob/develop/static/demo2.png?raw=true)" />
+ <img src="https://github.com/abaron10/Gothon/blob/master/static/demo2.png?raw=true)" />
 </p>
 
 
 This second example makes use of the Pop() function supporting negative indexing. In python a -1 in a list corresponds to position len(n) -1, a -2 to position len(n) -2 and so on.
 
 <p align="center">
- <img src="https://github.com/abaron10/Gothon/blob/develop/static/demo1.png?raw=true)" />
+ <img src="https://github.com/abaron10/Gothon/blob/master/static/demo1.png?raw=true)" />
 </p>
 
 <!-- GETTING STARTED -->
