@@ -22,9 +22,6 @@ The main goal of the Gothon's library is to facilitate and speed up the developm
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
        <ul>
         <li><a href="#supported-methods">Supported Methods</a></li>
       </ul>
@@ -85,9 +82,6 @@ The following methods and data structures are supported for the library in versi
 |Clear|This method removes all the elements from the slice|
 |Count|This method returns the number of elements with the specified passed value|
 |Copy|This method returns a copy of the specified slice|
-
-### Installation
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
