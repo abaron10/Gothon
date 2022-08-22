@@ -5,7 +5,7 @@
   <h3 align="center">Gothon library</h3>
 </p>
 
-Goth
+
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
