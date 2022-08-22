@@ -36,19 +36,12 @@ Goth
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![image](https://user-images.githubusercontent.com/64280930/108508911-88bbe280-728a-11eb-9761-cb21efbbb3c6.png)
 
 
-Clone of facebook login page. The design was developed with the current facebook version for the date 02/19/2021
 
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [Vue Js](https://vuejs.org/)
-* [Python](https://www.python.org/)
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-
 
 
 <!-- GETTING STARTED -->
@@ -56,22 +49,9 @@ This section should list any major frameworks that you built your project using.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* pipenv
-  ```sh
-  pip install pipenv
-  ```
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/abaron10/FacebookClone.git
-   ```
-3. Install PIPENV packages
-   ```sh
-   pipenv install
-   ```
 
 <!-- CONTRIBUTING -->
 ## Contributing
