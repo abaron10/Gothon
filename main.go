@@ -7,10 +7,11 @@ import (
 
 func main() {
 	s := NewMedian()
-	s.AddNumber(2)
-	s.AddNumber(3)
-	s.AddNumber(4)
-	s.AddNumber(4)
+
+	for i := 0; i < 10000; i++ {
+		s.AddNumber(i)
+	}
+
 	fmt.Println(s.FindMedian())
 }
 
