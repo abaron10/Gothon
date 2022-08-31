@@ -49,8 +49,9 @@ As said before, this library works with Go 1.18, so with the use of generics you
 
 
 This second example makes use of the Pop() function supporting negative indexing. In python a -1 in a list corresponds to position len(n) -1, a -2 to position len(n) -2 and so on.
-![image](https://user-images.githubusercontent.com/64280930/187721879-90de7919-a434-41b5-8a4d-0a9499b4a9f3.png)
-
+<p align="center">
+ <img src="https://github.com/abaron10/Gothon/blob/master/static/demo4.png?raw=true)" />
+</p>
 <!-- GETTING STARTED -->
 ## Getting Started
 To install the library in your project, do the following:
