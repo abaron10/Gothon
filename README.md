@@ -8,7 +8,7 @@
   
 </p>
 
-The main goal of the Gothon's library is to facilitate and speed up the development process by taking inspiration from some cool methods from Python coding language. With the version of Go 1.18 the use of generics makes it much easier to create generic methods with a smaller amount of code, this library takes advantage of the best of this new feature
+The main goal of the Gothon's library is to facilitate and speed up the development process by taking inspiration from some cool methods Python coding language. With the version of Go 1.18 the use of generics makes it much easier to create generic methods with a smaller amount of code, this library takes advantage of the best of this new feature
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -49,9 +49,11 @@ As said before, this library works with Go 1.18, so with the use of generics you
 
 
 This second example makes use of the Pop() function supporting negative indexing. In python a -1 in a list corresponds to position len(n) -1, a -2 to position len(n) -2 and so on.
+
 <p align="center">
  <img src="https://github.com/abaron10/Gothon/blob/master/static/demo4.png?raw=true)" />
 </p>
+
 <!-- GETTING STARTED -->
 ## Getting Started
 To install the library in your project, do the following:
