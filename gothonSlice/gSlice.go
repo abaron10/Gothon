@@ -87,12 +87,31 @@ func Count[T comparable](a []T, value T) int {
 
 //the Copy() method returns a copy of the specified slice
 func Copy[T any](a []T) []T {
-	copy := []T{}
+	var copy []T
 	copy = append(copy, a...)
 	return copy
 }
 
 //helpers methods
+
+func binarySearch(a []float64, x float64) int {
+	r := -1 // not found
+	start := 0
+	end := len(a) - 1
+	for start <= end {
+		mid := (start + end) / 2
+		if a[mid] == x {
+			r = mid // found
+			break
+		} else if a[mid] < x {
+			start = mid + 1
+		} else if a[mid] > x {
+			end = mid - 1
+		}
+	}
+	return r
+}
+
 func validateIndex(index int, size int) int {
 	if index > size-1 {
 		panic("IndexError: pop index out of range")
