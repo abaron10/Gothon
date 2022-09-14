@@ -87,7 +87,7 @@ func Count[T comparable](a []T, value T) int {
 
 //the Copy() method returns a copy of the specified slice
 func Copy[T any](a []T) []T {
-	copy := []T{}
+	var copy []T
 	copy = append(copy, a...)
 	return copy
 }
